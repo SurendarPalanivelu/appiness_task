@@ -1,0 +1,40 @@
+<h1 mat-dialog-title>Order information</h1>
+<div mat-dialog-content>
+  <mat-list>
+    <mat-list-item>
+      <h4 mat-line>Customer Name</h4>
+      <p mat-line> {{orderItem?.customer}} </p>
+    </mat-list-item>
+
+    <mat-list-item>
+      <h4 mat-line>Delivery Address</h4>
+      <p mat-line> {{orderItem?.delivery_address}} </p>
+    </mat-list-item>
+
+    <mat-list-item>
+      <h4 mat-line>Order Status - {{orderItem?.status}}</h4>
+    </mat-list-item>
+
+    <table border="1" style="border-collapse: collapse">
+      <tr>
+      <th>S.No</th>
+      <th>Name</th>
+      <th>No.of.Item</th>
+      <th>Total</th>
+      </tr>
+      <tr *ngFor="let item of orderItem?.items; let i=index">
+        <td>{{i+1}}</td>
+        <td>{{item?.name}}</td>
+        <td>{{item?.count}}</td>
+        <td class="txtRight">{{item?.amount}}</td>
+      </tr>
+      <tr>
+        <td colspan="3" class="txtRight">Net Amount </td>
+        <td class="txtRight">{{orderItem?.total}}</td>
+      </tr>
+    </table>
+  </mat-list>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Cancel</button>
+</div>
